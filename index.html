@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Хорео</title>
+<meta name="description" content="Планирование хореографии: расстановки, переходы, музыка">
+<meta name="theme-color" content="#121214">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Хорео">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <button class="ib" id="btnMenu" aria-label="Постановки" data-icon="menu"></button>
+    <div class="title">
+      <div id="projName">Хорео</div>
+      <div id="fmInfo" class="sub"></div>
+    </div>
+    <button class="ib" id="btnUndo" aria-label="Отменить" data-icon="undo"></button>
+    <button class="ib" id="btnRedo" aria-label="Повторить" data-icon="redo"></button>
+    <button class="ib" id="btnShare" aria-label="Экспорт" data-icon="share"></button>
+  </header>
+
+  <main id="stageWrap">
+    <svg id="stage" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="stage-tools">
+      <button class="tb" id="tMulti" aria-label="Выбор нескольких" data-icon="multi"></button>
+      <button class="tb" id="tSnap" aria-label="Привязка к сетке" data-icon="magnet"></button>
+      <button class="tb" id="tPaths" aria-label="Пути и прошлая формация" data-icon="path"></button>
+    </div>
+    <div id="selBar" class="selbar hidden"></div>
+    <div id="sheet" class="sheet hidden">
+      <div class="sheet-h"><b id="sheetTitle"></b><button class="ib" id="sheetClose" aria-label="Закрыть" data-icon="close"></button></div>
+      <div id="sheetBody"></div>
+    </div>
+  </main>
+
+  <section class="transport">
+    <button class="ib" id="btnPrev" aria-label="Предыдущая формация" data-icon="prev"></button>
+    <button class="ib play" id="btnPlay" aria-label="Играть" data-icon="play"></button>
+    <button class="ib" id="btnNext" aria-label="Следующая формация" data-icon="next"></button>
+    <div class="clock"><div id="tTime">0:00.0</div><div id="tCount" class="sub">—</div></div>
+    <button class="addf" id="btnAddF"><span data-icon="plus"></span>Формация</button>
+  </section>
+
+  <section class="timeline">
+    <canvas id="tl"></canvas>
+    <div class="tlzoom">
+      <button class="zb" id="zOut" aria-label="Уменьшить" data-icon="minus"></button>
+      <button class="zb" id="zIn" aria-label="Увеличить" data-icon="plus"></button>
+    </div>
+  </section>
+
+  <nav class="tabs">
+    <button data-tab="formation"><span data-icon="layers"></span>Формация</button>
+    <button data-tab="dancers"><span data-icon="users"></span>Танцоры</button>
+    <button data-tab="music"><span data-icon="music"></span>Музыка</button>
+    <button data-tab="stage"><span data-icon="stage"></span>Сцена</button>
+  </nav>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-card" id="modalCard"></div></div>
+<div id="toast" class="toast"></div>
+<audio id="audio" preload="auto" playsinline></audio>
+<input type="file" id="fileAudio" accept="audio/*,.mp3,.m4a,.wav,.aac" hidden>
+<input type="file" id="fileImport" hidden>
+<script src="app.js"></script>
+</body>
+</html>
